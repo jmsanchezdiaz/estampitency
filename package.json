@@ -11,6 +11,9 @@
   "overrides": {
     "csstype": "3.0.10"
   },
+  "resolutions": {
+    "csstype": "3.0.10"
+  },
   "dependencies": {
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.0",
