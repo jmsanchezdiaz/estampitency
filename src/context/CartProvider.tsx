@@ -48,7 +48,6 @@ const CartProvider: React.FC<Props> = ({ children }) => {
     } else {
       draft.delete(pid);
     }
-
     setCart(draft);
   };
 
