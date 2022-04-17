@@ -4,5 +4,9 @@ export interface Product {
   description: string;
   image: string;
   price: number;
+  quantity?: number;
+}
+
+export interface ProductCart extends Product {
   quantity: number;
 }

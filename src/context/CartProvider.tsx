@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { Product } from "../types";
+import { Product, ProductCart } from "../types";
 
 type ContextType = [
   {
-    cart: Map<Product["id"], Product>;
+    cart: Map<Product["id"], ProductCart>;
     isOnCart: (pid: string) => boolean;
     totalPrice: string;
   },
@@ -21,23 +21,25 @@ interface Props {
 }
 
 const CartProvider: React.FC<Props> = ({ children }) => {
-  const [cart, setCart] = useState(() => new Map<Product["id"], Product>());
+  const [cart, setCart] = useState(() => new Map<Product["id"], ProductCart>());
 
   const isOnCart = (id: Product["id"]) => cart.has(id);
 
   const increment = (pid: Product["id"]) => {
     let draft = new Map(cart);
-    let product = draft.get(pid) as Product;
+    let product = draft.get(pid) as ProductCart;
+
     draft.set(pid, {
       ...product,
       quantity: product.quantity + 1,
     });
+
     setCart(draft);
   };
 
   const decrement = (pid: Product["id"]) => {
     let draft = new Map(cart);
-    let product = draft.get(pid) as Product;
+    let product = draft.get(pid) as ProductCart;
     if (product.quantity > 1) {
       draft.set(pid, {
         ...product,
